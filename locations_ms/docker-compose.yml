@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+    app:
+        container_name: locations_ms_app
+        restart: always
+        build: .
+        ports: 
+            - "3000:3000"
+        links:
+            - postgres
+        environment: 
+            - DB_LOCATIONS_MS_USER="homestead"
+            - DB_LOCATIONS_MS_PASSWORD="secret"
+            - DB_LOCATIONS_MS_HOST="localhost"
+            - DB_LOCATIONS_MS_PORT="5432"
+        
+    postgres:
+        image: postgres
+        environment:
+            - POSTGRES_DB=locations_ms
+            - POSTGRES_USER=homestead
+            - POSTGRES_PASSWORD=secret
+        ports: 
+            - '5432:5432'
