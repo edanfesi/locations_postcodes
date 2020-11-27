@@ -6,6 +6,7 @@ const IDLE_TIMEOUT = 5000;
 const IDLE_CHECK_TIME = 1000;
 
 module.exports = {
+  DB_CONNECTION,
   databaseConfig: {
     client: 'pg',
     connection: DB_CONNECTION,

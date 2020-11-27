@@ -1,3 +1,3 @@
 module.exports = {
-  LOCATIONS: 'locations_ms',
+  LOCATIONS: 'locations',
 };
