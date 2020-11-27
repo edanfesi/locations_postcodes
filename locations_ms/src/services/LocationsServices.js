@@ -2,7 +2,9 @@ const LocationsService = module.exports;
 
 const fs = require('fs');
 const csv = require('csv-parser');
+
 const LocationsRepository = require('../repositories/LocationsRepository');
+const LocationsEventsProducer = require('../producers/LocationsEventsProducer');
 
 LocationsService.upload = async (file, options = {}) => {
   const logName = 'LocationsService.upload';
@@ -21,5 +23,7 @@ LocationsService.upload = async (file, options = {}) => {
       logger(logName, 'CSV file successfully processed');
 
       await LocationsRepository.upsert(dataToInsert);
+
+      return LocationsEventsProducer.sendMessage(dataToInsert);
     });
 };

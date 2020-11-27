@@ -27,6 +27,7 @@
     "express": "^4.17.1",
     "fs": "0.0.1-security",
     "http-errors": "^1.8.0",
+    "kafkajs": "^1.15.0",
     "knex": "^0.21.12",
     "multer": "^1.4.2",
     "pg": "^8.5.1"
