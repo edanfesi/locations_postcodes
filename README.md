@@ -22,7 +22,7 @@ Este repositorio contiene el proyecto en donde se calcule el código postal usan
   ```docker-compose up```
  
 ## Próximos pasos
-- [ ] Hacer pruebas unitarias al microservicio de locations-ms.
+- [x] Hacer pruebas unitarias al microservicio de locations-ms.
 - [ ] Crear el ms de postal_codes_ms
 - [ ] Hacer consumer en postal_codes_ms para leer los mensajes enviados por el tópico _locations-events_.
 - [ ] Crear resource para consultar postcodes.

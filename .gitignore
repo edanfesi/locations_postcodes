@@ -104,3 +104,6 @@ dist
 .tern-port
 
 locations_ms/uploads/*
+
+.vscode/
+locations_ms/.vscode/
