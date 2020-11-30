@@ -1,9 +1,8 @@
 const assert = require('assert');
-const { DB_CONNECTION: connection } = require('./src/config/database');
+const { DB_CONNECTION: connection, maxConnectionPoolSize } = require('./src/config/config');
 
 assert(connection, 'DB_CONNECTION must be provided');
 
-const maxConnectionPoolSize = parseInt(process.env.CONNECTION_POOL_SIZE, 10) || 10;
 const timeout = 30000;
 
 module.exports = {

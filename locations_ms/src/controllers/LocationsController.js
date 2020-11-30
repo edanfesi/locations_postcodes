@@ -1,6 +1,7 @@
 const LocationsController = module.exports;
 
 const createError = require('http-errors');
+const { FILE_CSV_TYPE } = require('../constants/GeneralConstants');
 
 const LocationsService = require('../services/LocationsServices');
 
@@ -16,17 +17,26 @@ const LocationsService = require('../services/LocationsServices');
  * @apiSuccess (204) {Object} message to indicate the file is uploading
  * @apiError (500) {Object} Internal Server Error
  */
-LocationsController.upload = (req, res, next) => {
+LocationsController.upload = (req, res) => {
   const logName = 'LocationsController.upload';
-  const logger = req.log || console.log;
+  const logger = req.log || console;
 
   const { file } = req;
 
-  logger(logName, `Starts with file ${file ? file.originalname : file}`);
+  logger.info(logName, `Starts with file ${file ? file.originalname : file}`);
 
-  if (!file) throw createError(400, 'Locations file missing');
+  if (!file) {
+    throw createError(400, 'Locations file missing');
+  }
 
-  return LocationsService.upload(file, { logger })
-    .then(() => res.status(204).send('Uploading file'))
-    .catch(next);
+  if (file.mimetype !== FILE_CSV_TYPE) {
+    throw createError(400, `Locations file has to be ${FILE_CSV_TYPE} and not ${file.mimetype}`);
+  }
+
+  LocationsService.upload(file, { logger })
+    .catch((error) => {
+      logger.error(logName, `Upload file ${file.originalname} with error ${error}`);
+    });
+
+  return res.send({ message: 'The file is being processed' });
 };

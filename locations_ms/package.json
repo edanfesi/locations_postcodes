@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js",
-    "test": "jest ./test"
+    "dev": "APP_ENV=local nodemon index.js",
+    "test": "APP_ENV=local DISABLE_ACCESS_LOGS=true node node_modules/.bin/mocha 'tests/**/*Test.js' --exit"
   },
   "keywords": [
     "locations",
@@ -16,14 +16,18 @@
   "author": "Edward Fernandez",
   "license": "ISC",
   "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
     "eslint": "^7.14.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",
-    "jest": "^26.6.3",
-    "nodemon": "^2.0.6"
+    "nodemon": "^2.0.6",
+    "mocha": "^5.2.0",
+    "sinon": "^7.1.1"
   },
   "dependencies": {
     "csv-parser": "^2.3.3",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "fs": "0.0.1-security",
     "http-errors": "^1.8.0",
