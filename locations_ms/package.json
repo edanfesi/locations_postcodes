@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node index.js",
     "dev": "APP_ENV=local nodemon index.js",
-    "test": "APP_ENV=local DISABLE_ACCESS_LOGS=true node node_modules/.bin/mocha 'tests/**/*Test.js' --exit"
+    "test": "APP_ENV=local DISABLE_ACCESS_LOGS=true node node_modules/.bin/mocha 'tests/**/*Test.js' --exit",
+    "lint": "node ./node_modules/eslint/bin/eslint.js --fix ."
   },
   "keywords": [
     "locations",
