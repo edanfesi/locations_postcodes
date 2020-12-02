@@ -5,12 +5,12 @@ const { kafka } = require('../config/kafka');
 const producer = kafka.producer();
 
 LocationsEventsProducer.sendMessage = async (data) => {
-    await producer.connect()
+  await producer.connect();
 
-    producer.send({
-        topic: 'locations-events',
-        messages: [
-            { key: 'key1', value: data.toString() }
-        ]
-    });
+  producer.send({
+    topic: 'locations-events',
+    messages: [
+      { key: 'key1', value: data.toString() },
+    ],
+  });
 };

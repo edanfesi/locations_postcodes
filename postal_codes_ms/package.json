@@ -1,0 +1,32 @@
+{
+  "name": "postal_codes_ms",
+  "version": "1.0.0",
+  "description": "Microservice to store the location of a lat and lng",
+  "main": "server.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "mongodb": "^3.6.3",
+    "redis": "^3.0.2"
+  },
+  "devDependencies": {
+    "eslint": "^7.14.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "nodemon": "^2.0.6"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "dev": "APP_ENV=local nodemon index.js",
+    "test": "APP_ENV=local DISABLE_ACCESS_LOGS=true node node_modules/.bin/mocha 'tests/**/*Test.js' --exit",
+    "lint": "node ./node_modules/eslint/bin/eslint.js --fix ."
+  },
+  "keywords": [
+    "latitude",
+    "longitude"
+  ],
+  "author": "Edward Fernandez",
+  "license": "ISC"
+}

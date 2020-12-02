@@ -8,9 +8,9 @@ const LocationsEventsProducer = require('../producers/LocationsEventsProducer');
 
 LocationsService.upload = async (file, options = {}) => {
   const logName = 'LocationsService.upload';
-  const { logger = console.log } = options;
+  const { logger = console } = options;
 
-  logger(logName, 'Starts uploading file to the database');
+  logger.info(logName, 'Starts uploading file to the database');
 
   const dataToInsert = [];
 
@@ -20,7 +20,7 @@ LocationsService.upload = async (file, options = {}) => {
       dataToInsert.push({ lat: parseFloat(row.lat), lng: parseFloat(row.lon) });
     })
     .on('end', async () => {
-      logger(logName, 'CSV file successfully processed');
+      logger.info(logName, 'CSV file successfully processed');
 
       await LocationsRepository.upsert(dataToInsert);
 

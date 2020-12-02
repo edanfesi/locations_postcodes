@@ -10,4 +10,6 @@ app.get('/', (req, res) => {
 
 app.use('/api/locations-ms', routes);
 
-app.listen(3000, () => {});
+app.listen(8080);
+
+module.exports = app;
